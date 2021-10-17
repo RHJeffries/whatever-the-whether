@@ -5,13 +5,14 @@ var cityShow = document.getElementById('cityName');
 var tempShow = document.getElementById('tempC');
 var windShow = document.getElementById('wind');
 var humidShow = document.getElementById('humidity');
+var uvShow = document.getElementById('uv');
 var fetchButton = document.getElementById('submit');
 var city = document.querySelector('.cityInput');
-var lat= [];
-var lon =[];
+
 
 
 function getCity() {
+    
     var cityUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city.value + "&units=metric&appid=" + APIKey;
     fetch(cityUrl)
         .then(function (response) {
@@ -42,21 +43,28 @@ function getCity() {
             windShow.append(wind);
             humidShow.append(humid);
 
+            var lon = data.coord.lon;
+            var lat = data.coord.lat;
+            uvIndex(lon, lat);
 
-            //uvIndex();
+            function uvIndex(){
+                var uvUrl = "https://api.openweathermap.org/data/2.5/onecall?lat="+ lat + "&lon="+lon+"&exclude=hourly,daily,minutely,alerts&appid="+APIKey;
+            
+                fetch(uvUrl) .then(function (response) {
+                    return response.json()
+            
+                })
+                .then(function (data) {
+                    console.log(data)
+                    var uvi = document.createElement('p')
+            
+                    uvi.textContent = `UV Index: ${data.current.uvi}`;
+
+                    uvShow.append(uvi);
+            })
+            }
         })
 }
 
 fetchButton.addEventListener('click', getCity);
 
-/*function uvIndex(){
-    var uvUrl = "https://api.openweathermap.org/data/2.5/solar_radiation?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
-
-    fetch(uvUrl) .then(function (response) {
-        return response.json()
-
-    })
-    .then(function (data) {
-        console.log(data)
-})
-}*/
