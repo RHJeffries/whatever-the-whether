@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/style.css"/>
+    <link rel="stylesheet" href="./assets/style.css" />
     <title>Weather Wise</title>
 </head>
 
@@ -18,29 +18,88 @@
         </div>
     </nav>
 
-<form>
-    <div class="mb-3 input">
-        <label for="cityInput" class="form-label">City</label>
-        <input type="text" class="form-control cityInput">
-        <button type="submit" id="submit" value="submit">Submit</button>
-    </div>
-</form>
+    <main>
+        <form>
+            <div class="mb-3 col-6 input">
+                <label for="cityInput" class="form-label">Type in the city below</label>
+                <input type="text" class="form-control cityInput">
+                <button type="submit" id="submit" value="submit">Submit</button>
+            </div>
+        </form>
 
-    <div id="city-container">
+        <div id="searchList"></div>
 
-    </div>
+        <section id="city-container" class="container-lg flex-column align-items-center"> </section>
 
-    <section>
-    <div id="five-day-container">
+        <h2>Five Day Forecast</h2>
+        <section id="five-day-container" class="card-group">
 
-    </div>
-</section>
+
+            <div id="dayOne" class="card">
+                <div class="card-body">
+                    <p id="forecastOne" class="card-text"> </p>
+                    <img id="iconOne" class="card-img smallIcon">
+
+                    <p id="tempCOne" class="card-text"> </p>
+                    <p id="windOne" class="card-text"> </p>
+                    <p id="humidOne" class="card-text"> </p>
+                </div>
+            </div>
+
+            <div id="dayTwo" class="card">
+                <div class="card-body">
+                    <p id="forecastTwo" class="card-text"> </p>
+                    <img id="iconTwo" class="card-img smallIcon">
+
+                    <p id="tempCTwo" class="card-text"> </p>
+                    <p id="windTwo" class="card-text"> </p>
+                    <p id="humidTwo" class="card-text"> </p>
+                </div>
+            </div>
+
+            <div id="dayThree" class="card">
+                <div class="card-body">
+                    <p id="forecastThree" class="card-text"> </p>
+                    <img id="iconThree" class="card-img smallIcon">
+
+                    <p id="tempCThree" class="card-text"> </p>
+                    <p id="windThree" class="card-text"> </p>
+                    <p id="humidThree" class="card-text"> </p>
+                </div>
+            </div>
+
+            <div id="dayFour" class="card">
+                <div class="card-body">
+                    <p id="forecastFour" class="card-text"> </p>
+                    <img id="iconFour" class="card-img smallIcon">
+
+                    <p id="tempCFour" class="card-text"> </p>
+                    <p id="windFour" class="card-text"> </p>
+                    <p id="humidFour" class="card-text"> </p>
+                </div>
+            </div>
+
+            <div id="dayFive" class="card">
+                <div class="card-body">
+                    <p id="forecastFive" class="card-text"> </p>
+                    <img id="iconFive" class="card-img smallIcon">
+
+                    <p id="tempCFive" class="card-text"> </p>
+                    <p id="windFive" class="card-text"> </p>
+                    <p id="humidFive" class="card-text"> </p>
+                </div>
+            </div>
+
+        </section>
+    </main>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./script.js"></script>
 </body>
 

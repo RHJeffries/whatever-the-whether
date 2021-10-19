@@ -4,7 +4,12 @@ body {
     line-height: 1;
     background-color: rgb(16, 49, 59);
     color: gainsboro;
+    
   }
+
+main{
+    margin-left: 20px;
+}
 
   #submit {
     border-left: 1px solid black;
@@ -12,4 +17,27 @@ body {
     
     background-color: #06aed5;
     color: white;
+  }
+
+  .img{
+    height: 50px;
+    width: 50px;
+  }
+
+  .smallIcon {
+    height: 50px;
+    width: 50px;
+  }
+
+  .card-body{
+      background-color:  rgb(16, 49, 59);
+      color: gainsboro;
+  }
+
+  .card{
+      border-style: none;
+  }
+
+  .card-img{
+      border-style: none;
   }
