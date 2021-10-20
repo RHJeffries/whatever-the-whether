@@ -23,11 +23,16 @@
             <div class="mb-3 col-6 input">
                 <label for="cityInput" class="form-label">Type in the city below</label>
                 <input type="text" class="form-control cityInput">
-                <button type="submit" id="submit" value="submit">Submit</button>
+                <button type="submit" id="submit" class="search" value="submit">Submit</button>
+                <button type="submit" id="new-search" class="search" value="submit">New Search</button>
             </div>
         </form>
 
-        <div id="searchList"></div>
+        <div id="searchList">
+        <ul id="results" class="col-3">
+
+        </ul>     
+        </div>
 
         <section id="city-container" class="container-lg flex-column align-items-center"> </section>
 

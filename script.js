@@ -3,6 +3,7 @@ var APIKey = "5267211d26e021e31b3419800fbf2329";
 var cityContainer = document.getElementById('city-container');
 
 var fetchButton = document.getElementById('submit');
+var refresh = document.getElementById('new-search');
 var city = document.querySelector('.cityInput');
 
 
@@ -19,6 +20,11 @@ function searchCity() {
 
 };
 
+function newSearch(){
+
+    location.reload()
+}
+
 function getCity() {
 
     var cityUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city.value + "&units=metric&appid=" + APIKey;
@@ -30,7 +36,9 @@ function getCity() {
         .then(function (data) {
             console.log(data)
 
-
+            searchList.push(city.value)
+            localStorage.setItem("search", JSON.stringify(searchList));
+        
             // variables for creating elements
             var cityName = document.createElement('h2');
             var today = document.createElement('p');
@@ -84,6 +92,20 @@ function uvIndex(lat, lon) {
         .then(function (data) {
             console.log(data)
             var uvi = document.createElement('p')
+            
+            
+            
+         
+
+            if (data.value < 3){
+                uvi.setAttribute("color", "green");
+            }
+            if (data.value > 3 & data.value < 6){
+                uvi.setAttribute("color", "green");
+            }
+            else {
+                uvi.setAttribute("color", "green");
+            }
 
             uvi.textContent = `UV Index: ${data.current.uvi}`;
 
@@ -302,6 +324,30 @@ function fifthDay(lat, lon) {
             humidFive.append(humidDays);
 
         })
+       
 };
 
+//var searchList = document.querySelector('#searchList');
+var results = document.querySelector('#results');
+var searchList = [];
+
+function searchHist(){
+
+    
+
+    searchList = JSON.parse(localStorage.getItem('search')) || [];
+    
+   for (var i = 0; i < searchList.length; i++ ) {
+
+    var li = document.createElement("li"); 
+    li.textContent = searchList[i];
+    li.setAttribute("class", "list ");
+    li.setAttribute("type", "button");
+    results.appendChild(li);
+   }
+}
+
 fetchButton.addEventListener('click', searchCity);
+refresh.addEventListener('click', newSearch);
+
+searchHist()
