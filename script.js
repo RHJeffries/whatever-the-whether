@@ -4,23 +4,21 @@ var cityContainer = document.getElementById('city-container');
 
 var fetchButton = document.getElementById('submit');
 var refresh = document.getElementById('new-search');
+
 var city = document.querySelector('.cityInput');
+var results = document.querySelector('#results');
+var searchList = [];
 
 
 
 function searchCity() {
     event.preventDefault();
 
-
-
-    getCity()
-
-
-
+    getCity();
 
 };
 
-function newSearch(){
+function newSearch() {
 
     location.reload()
 }
@@ -38,7 +36,7 @@ function getCity() {
 
             searchList.push(city.value)
             localStorage.setItem("search", JSON.stringify(searchList));
-        
+
             // variables for creating elements
             var cityName = document.createElement('h2');
             var today = document.createElement('p');
@@ -92,18 +90,17 @@ function uvIndex(lat, lon) {
         .then(function (data) {
             console.log(data)
             var uvi = document.createElement('p')
-            
-            
-            
-         
 
-            if (data.value < 3){
+
+
+
+
+            if (data.value < 3) {
                 uvi.setAttribute("color", "green");
             }
-            if (data.value > 3 & data.value < 6){
+            if (data.value > 3 & data.value < 6) {
                 uvi.setAttribute("color", "green");
-            }
-            else {
+            } else {
                 uvi.setAttribute("color", "green");
             }
 
@@ -124,7 +121,7 @@ function firstDay(lat, lon) {
         .then(function (data) {
             console.log(data)
 
-            
+
 
             // variables for creating elements
 
@@ -144,7 +141,7 @@ function firstDay(lat, lon) {
             windDays.textContent = `Wind speed: ${data.daily[1].wind_speed} m/s`;
             humidDays.textContent = `Humidity: ${data.daily[1].humidity}%`;
 
-            
+
             // appending to container
 
             forecastOne.append(forecastDays);
@@ -169,7 +166,7 @@ function secondDay(lat, lon) {
         .then(function (data) {
             console.log(data)
 
-           
+
 
             // variables for creating elements
 
@@ -211,7 +208,7 @@ function thirdDay(lat, lon) {
         .then(function (data) {
             console.log(data)
 
-           
+
 
             // variables for creating elements
 
@@ -253,7 +250,7 @@ function fourthDay(lat, lon) {
         .then(function (data) {
             console.log(data)
 
-           
+
 
             // variables for creating elements
 
@@ -295,7 +292,7 @@ function fifthDay(lat, lon) {
         .then(function (data) {
             console.log(data)
 
-            
+
 
             // variables for creating elements
 
@@ -324,30 +321,41 @@ function fifthDay(lat, lon) {
             humidFive.append(humidDays);
 
         })
-       
+
 };
 
-//var searchList = document.querySelector('#searchList');
-var results = document.querySelector('#results');
-var searchList = [];
 
-function searchHist(){
 
-    
+
+function searchHist() {
+
+
 
     searchList = JSON.parse(localStorage.getItem('search')) || [];
-    
-   for (var i = 0; i < searchList.length; i++ ) {
 
-    var li = document.createElement("li"); 
-    li.textContent = searchList[i];
-    li.setAttribute("class", "list ");
-    li.setAttribute("type", "button");
-    results.appendChild(li);
-   }
+    for (var i = 0; i < searchList.length; i++) {
+
+        var li = document.createElement("li");
+        li.textContent = searchList[i];
+        li.setAttribute("class", "list");
+        li.setAttribute("type", "button");
+        results.appendChild(li);
+    }
+   
+}
+
+function searchAgain(event) {
+    searchList = JSON.parse(localStorage.getItem('search'))
+    var pastCity = event.target.getAttribute('searchList');
+   
+    getCity(pastCity);
+
 }
 
 fetchButton.addEventListener('click', searchCity);
 refresh.addEventListener('click', newSearch);
 
+
 searchHist()
+
+document.querySelector('.list').addEventListener('click', searchAgain)
